@@ -42,3 +42,4 @@ ts	task	event	actor	refs	msg
 2026-11-03T01:49+09:00	T-0003	close	agent	R-0005	done (backfilled)
 2026-11-03T23:06+09:00	T-0004	deliver	agent	R-0006	report delivered (backfilled from file mtime)
 2026-11-03T23:06+09:00	T-0004	close	agent	R-0006	done (backfilled)
+2026-11-11T12:52+09:00	-	admin	agent	R-0001	set uses=N-0001,N-0002,N-0003,N-0004,N-0005,R-0002,R-0003,R-0004

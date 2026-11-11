@@ -6,7 +6,7 @@ title: "Vary the route, fix the target, select the medoid"
 status: final
 created: 2026-11-06
 tags: [prompt-ensemble, issue-normalization, clustering]
-uses: [N-0001, N-0002, N-0003, N-0004, N-0005]
+uses: [N-0001, N-0002, N-0003, N-0004, N-0005, R-0002, R-0003, R-0004]
 ---
 
 # Vary the route, fix the target, select the medoid
