@@ -20,6 +20,7 @@ tasks/T-0001_<slug>/      one directory per task
   R-0001_<slug>.md        report (deliverable)
   raw/                    optional source captures; not indexed
 tools/dr.py               registry tool; the only writer of INDEX.md, index/, log/
+.claude/skills/dr-research/  research procedure: SKILL.md (coordinator), researcher.md, report-writer.md
 ```
 
 Source of truth: frontmatter of `tasks/**.md` and `log/events.tsv`. Everything under `index/` and `INDEX.md` is derived; never hand-edit.
@@ -58,10 +59,12 @@ Tags: lowercase kebab-case, 2-4 per document, specific to that document. Check t
 
 Run as `tools/dr.py <cmd>` from the workspace root. `-h` on any command lists options.
 
+Every research request runs through the workspace skill `dr-research`, which implements the steps below and sets the tier (`lookup`, `quick`, `standard`, `deep`). Do not use the generic `deep-research` skill: its folders, titles, language and report format conflict with these rules.
+
 1. **Intake.** `dr.py task "<English title>" --slug <slug> --tags a,b --request "<English brief>"`. Fill `## Scope` in `task.md`. Log each clarification: `dr.py log T-x ask "..."`, `dr.py log T-x answer "..." --actor user`.
 2. **Prior-work check, before any search.** Read `INDEX.md`. `dr.py find --tag <t>` / `--text <regex>`; `grep <domain-or-title> index/sources.tsv`. Reuse existing notes through `uses`; do not re-fetch a source already extracted unless it is stale or was only verified at [A]/[M].
 3. **Research.** One note per sub-question: `dr.py new note T-x <slug> --title "..."` returns the path to write. For delegated work log `dispatch` (actor `agent`, msg = sub-question) and `return` (actor `sub:<name>`, refs = note ids).
-4. **Skill output.** If the deep-research skill or a subagent wrote files elsewhere (`research_notes/`, `reports/`, scratch), register them at once: `dr.py ingest note T-x <files>`, `dr.py ingest report T-x <file> --slug <slug> --uses N-a,N-b`. No unregistered `.md` stays in the workspace.
+4. **Stray output.** If a skill or a subagent wrote files elsewhere (`research_notes/`, `reports/`, scratch), register them at once: `dr.py ingest note T-x <files>`, `dr.py ingest report T-x <file> --slug <slug> --uses N-a,N-b`. No unregistered `.md` stays in the workspace.
 5. **Report.** `dr.py new report T-x <slug> --uses <note ids>`.
 6. **Deliver and close.** `dr.py log T-x deliver "<what was sent>" --refs R-x`, then `dr.py close T-x --deliverable R-x` (drafts become final; comma list if several reports were delivered).
 7. **After close.** Correction to the same deliverable: `dr.py reopen T-x "<reason>"`, log `revise`, close again. New question on the topic: new task whose documents `uses` the old ones.
@@ -74,7 +77,7 @@ Run as `tools/dr.py <cmd>` from the workspace root. `-h` on any command lists op
 | event | when |
 |---|---|
 | received | task opened (automatic) |
-| ask / answer | question to requester / reply |
+| ask / answer | question to requester / reply; also `answer` (actor `agent`) for a lookup answered from existing documents |
 | plan | sub-questions fixed |
 | dispatch / return | work sent to / returned from a subagent |
 | add | document created or ingested (automatic) |
