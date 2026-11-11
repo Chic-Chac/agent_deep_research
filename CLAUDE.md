@@ -63,7 +63,7 @@ Run as `tools/dr.py <cmd>` from the workspace root. `-h` on any command lists op
 3. **Research.** One note per sub-question: `dr.py new note T-x <slug> --title "..."` returns the path to write. For delegated work log `dispatch` (actor `agent`, msg = sub-question) and `return` (actor `sub:<name>`, refs = note ids).
 4. **Skill output.** If the deep-research skill or a subagent wrote files elsewhere (`research_notes/`, `reports/`, scratch), register them at once: `dr.py ingest note T-x <files>`, `dr.py ingest report T-x <file> --slug <slug> --uses N-a,N-b`. No unregistered `.md` stays in the workspace.
 5. **Report.** `dr.py new report T-x <slug> --uses <note ids>`.
-6. **Deliver and close.** `dr.py log T-x deliver "<what was sent>" --refs R-x`, then `dr.py close T-x --deliverable R-x` (drafts become final).
+6. **Deliver and close.** `dr.py log T-x deliver "<what was sent>" --refs R-x`, then `dr.py close T-x --deliverable R-x` (drafts become final; comma list if several reports were delivered).
 7. **After close.** Correction to the same deliverable: `dr.py reopen T-x "<reason>"`, log `revise`, close again. New question on the topic: new task whose documents `uses` the old ones.
 8. **End of every session.** `dr.py check` must report 0 problems.
 

@@ -219,7 +219,7 @@ def build(docs):
         notes = sum(1 for d in docs.values() if d.type == "note" and d.meta.get("task") == t.id)
         md.append(f"| {t.id} | {t.meta.get('status', '')} | {t.meta.get('received', '')[:10]} | "
                   f"{t.meta.get('finished', '')[:10]} | {t.meta.get('title', '')} | "
-                  f"{t.meta.get('deliverable', '')} | {notes} | {t.path.parent.relative_to(ROOT).as_posix()}/ |")
+                  f"{', '.join(t.lst('deliverable'))} | {notes} | {t.path.parent.relative_to(ROOT).as_posix()}/ |")
     md += ["", "## Tags", ""]
     md += [f"- {t} ({len(ids)}): {' '.join(ids)}" for t, ids in sorted(tags.items())] or ["(none)"]
     md += ["", "## Lookup", "",
@@ -345,8 +345,10 @@ def cmd_close(a):
     task = get(docs, a.task, "task")
     at = a.at or now()
     if a.deliverable:
-        get(docs, a.deliverable, "report")
-        task.meta["deliverable"] = a.deliverable
+        ids = csv(a.deliverable)
+        for i in ids:
+            get(docs, i, "report")
+        task.meta["deliverable"] = ids[0] if len(ids) == 1 else ids
     if a.status == "done" and not task.meta.get("deliverable"):
         die("done task needs --deliverable R-xxxx (or use --status dropped)")
     task.meta.update(status=a.status, finished=at)
@@ -357,7 +359,7 @@ def cmd_close(a):
             d.meta["status"] = "final"
             d.write(keep_mtime=True)
             n += 1
-    log_event(task.id, "close", a.msg or f"{a.status}; {n} docs finalized", refs=task.meta.get("deliverable", ""), at=at)
+    log_event(task.id, "close", a.msg or f"{a.status}; {n} docs finalized", refs=",".join(task.lst("deliverable")), at=at)
     reindex(quiet=True)
     print(f"{task.id} {a.status}; {n} docs draft->final")
 
@@ -557,7 +559,7 @@ def main():
 
     p = sub.add_parser("close", help="finish a task; drafts become final")
     p.add_argument("task")
-    p.add_argument("--deliverable")
+    p.add_argument("--deliverable", help="report id, or comma list when several reports were delivered")
     p.add_argument("--status", choices=["done", "dropped"], default="done")
     p.add_argument("--msg")
     p.add_argument("--at")

@@ -14,3 +14,31 @@ ts	task	event	actor	refs	msg
 2026-11-11T11:09+09:00	-	admin	agent	N-0004	set tags=key-point-analysis,issue-normalization
 2026-11-11T11:09+09:00	-	admin	agent	N-0005	set tags=qualitative-coding,topic-modeling
 2026-11-11T11:09+09:00	-	admin	agent	R-0001,T-0001	set tags=prompt-ensemble,issue-normalization,clustering
+2026-11-02T23:25+09:00	T-0002	received	user		T-48 Parts 1-3 (backfilled 2026-11-11): preprocessing/representation, embedding + clustering, and evaluation for issue-level clustering of ko/en YouTube comments on a local 16 GB GPU; one shortlist report per part.
+2026-11-03T01:40+09:00	T-0003	received	user		T-48 Part 4 (backfilled 2026-11-11): re-chunk ASR transcript spans so comment-to-segment linking and the context shown to the LLM improve; cover chunking, ko/en re-segmentation, matching vs shown unit, and link gating calibrated on ~100 labels.
+2026-11-03T22:57+09:00	T-0004	received	user		T-48 Part 5 (backfilled 2026-11-11): fix mid-sentence speaker changes and misattributed questions/interjections in WhisperX/pyannote-style spans; shortlist per area A extraction, B post-hoc repair, C evaluation, D downstream; recommend repair now and extraction changes for Ruminatai.
+2026-11-02T23:31+09:00	T-0002	add	agent	N-0006	ingested p1a_gist_normalization.md
+2026-11-02T23:29+09:00	T-0002	add	agent	N-0007	ingested p1b_context_and_stance.md
+2026-11-02T23:28+09:00	T-0002	add	agent	N-0008	ingested p1c_short_text_preprocessing.md
+2026-11-02T23:30+09:00	T-0002	add	agent	N-0009	ingested p2a_embedding_models.md
+2026-11-02T23:29+09:00	T-0002	add	agent	N-0010	ingested p2b_clustering_methods.md
+2026-11-02T23:30+09:00	T-0002	add	agent	N-0011	ingested p3_evaluation.md
+2026-11-03T01:45+09:00	T-0003	add	agent	N-0012	ingested chunking_methods.md
+2026-11-03T01:45+09:00	T-0003	add	agent	N-0013	ingested asr_resegmentation.md
+2026-11-03T01:44+09:00	T-0003	add	agent	N-0014	ingested link_gating_calibration.md
+2026-11-03T23:01+09:00	T-0004	add	agent	N-0015	ingested A1_diarization_and_joint_asr_models.md
+2026-11-03T23:02+09:00	T-0004	add	agent	N-0016	ingested A2_word_assignment_segmentation_metadata.md
+2026-11-03T23:02+09:00	T-0004	add	agent	N-0017	ingested B_post_hoc_repair.md
+2026-11-03T23:02+09:00	T-0004	add	agent	N-0018	ingested C_evaluation.md
+2026-11-03T23:02+09:00	T-0004	add	agent	N-0019	ingested D_downstream_retrieval.md
+2026-11-02T23:34+09:00	T-0002	add	agent	R-0002	ingested part1.md
+2026-11-02T23:33+09:00	T-0002	add	agent	R-0003	ingested part2.md
+2026-11-02T23:32+09:00	T-0002	add	agent	R-0004	ingested part3.md
+2026-11-03T01:49+09:00	T-0003	add	agent	R-0005	ingested Transcript rechunking for comment linking.md
+2026-11-03T23:06+09:00	T-0004	add	agent	R-0006	ingested Speaker attributed transcript repair.md
+2026-11-02T23:34+09:00	T-0002	deliver	agent	R-0002,R-0003,R-0004	part1.md, part2.md, part3.md delivered (backfilled from file mtime)
+2026-11-02T23:34+09:00	T-0002	close	agent	R-0002,R-0003,R-0004	done (backfilled)
+2026-11-03T01:49+09:00	T-0003	deliver	agent	R-0005	part4.md delivered (backfilled from file mtime)
+2026-11-03T01:49+09:00	T-0003	close	agent	R-0005	done (backfilled)
+2026-11-03T23:06+09:00	T-0004	deliver	agent	R-0006	report delivered (backfilled from file mtime)
+2026-11-03T23:06+09:00	T-0004	close	agent	R-0006	done (backfilled)
