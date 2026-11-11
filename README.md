@@ -11,7 +11,7 @@
 | 지금까지 어떤 리서치를 했나 | [`INDEX.md`](INDEX.md)의 Tasks 표 |
 | 특정 주제의 문서가 어디 있나 | [`INDEX.md`](INDEX.md)의 Tags 목록 |
 | 어떤 작업을 언제 맡겨서 언제 끝났나 | [`log/events.tsv`](log/events.tsv) |
-| 특정 논문·URL을 인용한 문서 | [`index/sources.tsv`](index/sources.tsv) |
+| 인용한 논문·URL 링크 | [`index/sources.tsv`](index/sources.tsv) |
 | 보고서 본문 | `tasks/T-xxxx_<주제>/R-xxxx_<제목>.md` |
 
 ## 디렉토리 구조
