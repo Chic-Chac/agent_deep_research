@@ -1,0 +1,2 @@
+# Runtime dependency of tools/dr.py. Python >= 3.9.
+PyYAML>=6.0

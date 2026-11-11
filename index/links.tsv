@@ -1,0 +1,15 @@
+src	rel	dst
+N-0001	task	T-0001
+N-0002	task	T-0001
+N-0003	task	T-0001
+N-0004	task	T-0001
+N-0005	task	T-0001
+R-0001	task	T-0001
+R-0001	uses	N-0001
+R-0001	uses	N-0002
+R-0001	uses	N-0003
+R-0001	uses	N-0004
+R-0001	uses	N-0005
+T-0001	deliverable	R-0001
+T-0001	mentions	N-0001
+T-0001	mentions	N-0005

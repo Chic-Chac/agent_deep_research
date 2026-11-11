@@ -1,0 +1,16 @@
+ts	task	event	actor	refs	msg
+2026-11-06T11:50+09:00	T-0001	received	user		Backfilled 2026-11-11; original request text not recorded. Topic (from report): which prompt-ensemble design and aggregation suit an LLM step that rewrites text blocks into stance-neutral issue questions that are then embedded and clustered.
+2026-11-06T11:56+09:00	T-0001	add	agent	N-0001	ingested embedding_ensembles_aggregation.md
+2026-11-06T11:57+09:00	T-0001	add	agent	N-0002	ingested ensemble_evaluation_stability.md
+2026-11-06T11:57+09:00	T-0001	add	agent	N-0003	ingested generation_prompt_ensembles.md
+2026-11-06T11:56+09:00	T-0001	add	agent	N-0004	ingested key_point_issue_normalization.md
+2026-11-06T11:56+09:00	T-0001	add	agent	N-0005	ingested llm_qualitative_coding_topic_modeling.md
+2026-11-06T12:02+09:00	T-0001	add	agent	R-0001	ingested 쟁점 문장 프롬프트 앙상블 설계.md
+2026-11-06T12:02+09:00	T-0001	deliver	agent	R-0001	report delivered (backfilled from file mtime)
+2026-11-06T12:02+09:00	T-0001	close	agent	R-0001	done (backfilled)
+2026-11-11T11:09+09:00	-	admin	agent	N-0001	set tags=prompt-ensemble,embeddings,aggregation
+2026-11-11T11:09+09:00	-	admin	agent	N-0002	set tags=evaluation,prompt-sensitivity,clustering
+2026-11-11T11:09+09:00	-	admin	agent	N-0003	set tags=prompt-ensemble,text-generation
+2026-11-11T11:09+09:00	-	admin	agent	N-0004	set tags=key-point-analysis,issue-normalization
+2026-11-11T11:09+09:00	-	admin	agent	N-0005	set tags=qualitative-coding,topic-modeling
+2026-11-11T11:09+09:00	-	admin	agent	R-0001,T-0001	set tags=prompt-ensemble,issue-normalization,clustering

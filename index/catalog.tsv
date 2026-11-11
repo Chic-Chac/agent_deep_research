@@ -1,0 +1,8 @@
+id	type	task	status	date	kb	tags	path	title
+T-0001	task		done	2026-11-06	1	prompt-ensemble,issue-normalization,clustering	tasks/T-0001_issue-prompt-ensemble/task.md	Prompt ensemble design for stance-neutral issue sentences
+R-0001	report	T-0001	final	2026-11-06	49	prompt-ensemble,issue-normalization,clustering	tasks/T-0001_issue-prompt-ensemble/R-0001_issue-prompt-ensemble-design.md	Vary the route, fix the target, select the medoid
+N-0001	note	T-0001	final	2026-11-06	29	prompt-ensemble,embeddings,aggregation	tasks/T-0001_issue-prompt-ensemble/N-0001_embedding-ensembles-aggregation.md	Prompt/Template Ensembles for Text Embeddings and Aggregation of Generated-Text Ensembles for Clustering
+N-0002	note	T-0001	final	2026-11-06	44	evaluation,prompt-sensitivity,clustering	tasks/T-0001_issue-prompt-ensemble/N-0002_ensemble-evaluation-stability.md	Evaluating and Selecting a Prompt Ensemble for LLM-Generated Issue Labels (Unsupervised + Small Labeled Set)
+N-0003	note	T-0001	final	2026-11-06	32	prompt-ensemble,text-generation	tasks/T-0001_issue-prompt-ensemble/N-0003_generation-prompt-ensembles.md	Prompt ensembling for LLM text generation: which variation dimensions help and which only add noise
+N-0004	note	T-0001	final	2026-11-06	34	key-point-analysis,issue-normalization	tasks/T-0001_issue-prompt-ensemble/N-0004_key-point-issue-normalization.md	Key Point Analysis, Claim Normalization, and Stance-Neutral Issue Framing: Evidence for Canonical Issue-String Generation
+N-0005	note	T-0001	final	2026-11-06	33	qualitative-coding,topic-modeling	tasks/T-0001_issue-prompt-ensemble/N-0005_llm-qualitative-coding-topic-modeling.md	LLM-assisted qualitative coding, codebook induction, and LLM topic modeling: label generation, consolidation, and prompt-sensitivity controls
