@@ -10,6 +10,7 @@ CLAUDE.md                 rules (this file)
 README.md                 guide for human users, Korean; exempt from writing rules; do not load for work
 requirements.txt          dependency of tools/dr.py (PyYAML)
 INDEX.md                  generated: task table, tag index, lookup pointers
+BACKLOG.md                open questions and future work that no active task owns; hand-edited
 index/catalog.tsv         generated: every object (id, type, task, status, date, kb, tags, path, title)
 index/links.tsv           generated: edges src-rel-dst
 index/sources.tsv         generated: cited URL -> documents
@@ -20,6 +21,7 @@ tasks/T-0001_<slug>/      one directory per task
   R-0001_<slug>.md        report (deliverable)
   raw/                    optional source captures; not indexed
 tools/dr.py               registry tool; the only writer of INDEX.md, index/, log/
+tools/fulltext.py         fetch a source as verbatim text with keyword contexts; needed for [V]
 .claude/skills/dr-research/  research procedure: SKILL.md (coordinator), researcher.md, report-writer.md
 ```
 
@@ -88,6 +90,15 @@ Every research request runs through the workspace skill `dr-research`, which imp
 
 Actor: `user`, `agent`, or `sub:<name>`. Msg: one line, facts only.
 
+## Backlog
+
+`BACKLOG.md` holds what should outlive a session but is not yet a task: questions a closed task left open and that are worth a follow-up, and work on the workspace itself (tools, skill, rules).
+
+- One table row per item: `B-0001` (sequential, never reused), kind `question` or `work`, date opened, origin (task or report ID, or `user`), the item in one to three sentences with what "done" means.
+- Add a row when the requester asks, or when a task closes with an open question that would change its conclusion. Do not copy every gap of a report; those stay in the report.
+- When an item is taken up: research goes through a new task whose `## Request` cites the `B-` id; workspace work is done directly. Then move the row to `## Closed` with the date and the resolving ID or commit.
+- Read it during the prior-work check. Rows are never deleted.
+
 ## Tracing and batch operations
 
 - `dr.py show <ID>`: metadata, links out, links in, log rows of one object. Task -> documents -> log in one call.
@@ -105,7 +116,7 @@ Goal: low storage and token cost. Applies to every stored file.
 - English only, including titles, slugs, tags, log messages, commit messages. Exception: `README.md`. Reply to the requester in their language; store in English.
 - State facts plainly. No intensifiers, no scene-setting, no restating the question, no summary that repeats the body.
 - One claim per sentence or bullet, with number, unit, date, and source link.
-- Mark each sourced claim: `[V]` checked against primary full text, `[A]` abstract/snippet/secondary only, `[M]` from memory, unverified. (T-0001 notes predate this and use equivalent longer labels.)
+- Mark each sourced claim: `[V]` checked against the verbatim primary full text (`tools/fulltext.py` or the PDF itself, not a fetch tool's summary), `[A]` abstract/snippet/secondary only, `[M]` from memory, unverified. (T-0001 notes predate this and use equivalent longer labels.)
 - Separate evidence from inference. Label inference as inference.
 - Notes hold extracted facts and the URL, not page copies. Use `raw/` only for sources that may become unreachable.
 - Tables for comparisons, bullets for lists, prose only where reasoning needs it.
